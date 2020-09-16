@@ -167,6 +167,8 @@ def export_markdown():
         c = conn.execute(query)
     note_count = 0
     for row in c:
+        if row['ZENCRYPTED'] == 1:
+          continue
         title = row['ZTITLE']
         md_text = row['ZTEXT'].rstrip()
         creation_date = row['ZCREATIONDATE']
